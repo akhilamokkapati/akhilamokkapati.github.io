@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Akhila Mokkapati</title>
+
+<!-- FAVICON -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#f15304;
+  color:white;
+  font-family:Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+/* TOP + BOTTOM FADE */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  left:0;
+  width:100%;
+  height:120px;
+  pointer-events:none;
+  z-index:10;
+}
+
+body::before{
+  top:0;
+  background:linear-gradient(#c24a00, transparent);
+}
+
+body::after{
+  bottom:0;
+  background:linear-gradient(transparent, #c24a00);
+}
+
+/* MAIN WRAP */
+.wrap{
+  padding:100px 120px 300px 120px;
+  max-width:1600px;
+}
+
+/* NAME */
+.site-name{
+  font-size:96px;
+  font-weight:900;
+  font-style:italic;
+  letter-spacing:-4px;
+  margin-bottom:40px;
+  text-align:center;
+}
+
+/* INTRO */
+.bio{
+  font-size:26px;
+  line-height:1.7;
+  margin-bottom:10px;
+  max-width:1200px;
+}
+
+.bio a{
+  color:white;
+  text-decoration:underline;
+}
+
+/* SECTIONS */
+section{
+  margin-top:120px;
+  transform-origin:center center;
+  transform-style:preserve-3d;
+  will-change:transform;
+  transition:transform 0.1s linear, opacity 0.1s linear;
+}
+
+h2{
+  font-size:38px;
+  border-bottom:1px solid rgba(255,255,255,0.25);
+  padding-bottom:18px;
+  margin-bottom:28px;
+}
+
+/* ROWS */
+.row{
+  display:flex;
+  gap:18px;
+  margin-bottom:24px;
+  font-size:24px;
+  line-height:1.7;
+  max-width:1500px;
+}
+
+.yr{
+  font-size:15px;
+  opacity:.65;
+  min-width:50px;
+  padding-top:5px;
+}
+
+.row a{
+  color:white;
+  text-decoration:underline;
+  font-weight:700;
+}
+
+.row a:hover{
+  opacity:0.7;
+}
+
+/* SMALLER TEXT BLOCKS */
+.small{
+  font-size:20px;
+  opacity:0.92;
+  margin-top:10px;
+  line-height:1.7;
+  max-width:1300px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.wrap{
+  padding:60px 35px 200px 35px;
+}
+
+.site-name{
+  font-size:56px;
+  text-align:left;
+}
+
+.bio{
+  font-size:20px;
+}
+
+.row{
+  font-size:19px;
+  flex-direction:column;
+  gap:2px;
+}
+
+h2{
+  font-size:28px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<!-- NAME -->
+<h1 class="site-name">Akhila Mokkapati</h1>
+
+<!-- INTRO -->
+<p class="bio">
+Engineering undergraduate experienced in embedded systems, sensing systems, automation, and hardware-software integration.
+</p>
+
+<p class="bio">
+I enjoy building real-world systems using ESP32, Arduino, IoT technologies, embedded control, and rapid prototyping.
+</p>
+
+<p class="bio">
+Interested in robotics, embedded software, electronics, automation systems, and product-focused engineering.
+</p>
+
+<p class="bio">
+<a href="mailto:akhilamokkapati@gmail.com">
+akhilamokkapati@gmail.com
+</a>
+
+·
+
+<a href="https://www.linkedin.com/in/akhila-mokkapati" target="_blank">
+LinkedIn
+</a>
+</p>
+
+<!-- PROJECTS -->
+<section>
+
+<h2>Projects</h2>
+
+<div class="row">
+<span class="yr">2026</span>
+<span>
+<a href= "gaitway.html">Project Gaitway</a>
+— Wearable stroke rehabilitation exoskeleton integrating IMU sensing, motor assistance, and GVS balance support
+</span>
+</div>
+
+<div class="row">
+<span class="yr">2025</span>
+<span>
+<a href="rfind.html">RFIND</a>
+— RFID-based smart inventory localization system using ESP32 microcontrollers and wireless communication
+</span>
+</div>
+
+<div class="row">
+<span class="yr">2026</span>
+<span>
+<a href="seed.html">SEED Research</a>
+— Federated learning on distributed NVIDIA Jetson edge devices
+</span>
+</div>
+
+<div class="row">
+<span class="yr">2025</span>
+<span>
+<a href="assistivehand.html">Assistive Hand Device</a>
+— Low-cost rehabilitation device for stroke patients focused on usability and comfort
+</span>
+</div>
+
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+
+<h2>Experience</h2>
+
+<div class="row">
+<span class="yr">2025</span>
+<span>
+<a href="jadefoci.html">Jade Foci</a>
+— Product & Market Research Intern working on AI product positioning, global markets, and TikTok growth experiments
+</span>
+</div>
+
+<div class="row">
+<span class="yr">2026</span>
+<span>
+<a href="asean.html">ASEAN Future Catalyst Fellowship</a>
+— Women in Tech for Impact social entrepreneurship fellowship
+</span>
+</div>
+
+</section>
+
+<!-- EDUCATION -->
+<section>
+
+<h2>Education</h2>
+
+<div class="row">
+<span class="yr">2024</span>
+<span>
+<a href="sutd.html">Singapore University of Technology and Design</a>
+— Engineering Product Development (Electrical Track), Undergraduate Merit Scholarship
+</span>
+</div>
+
+<div class="row">
+<span class="yr">2025</span>
+<span>
+<a href="zhejiang.html">Zhejiang University</a>
+— TIIDE Entrepreneurship & Innovation Programme (Full Scholarship)
+</span>
+</div>
+
+<div class="row">
+<span class="yr">2025</span>
+<span>
+<a href="surabaya.html">Global Exploration Opportunity</a>
+— Surabaya Public Transport Systems Study, Indonesia
+</span>
+</div>
+
+</section>
+
+<!-- TECH SKILLS -->
+<section>
+
+<h2>Technical Skills</h2>
+
+<div class="row">
+<span class="yr"></span>
+<span>
+Programming: Python · C++ · Arduino C++ · JavaScript · HTML/CSS · MySQL
+</span>
+</div>
+
+<div class="row">
+<span class="yr"></span>
+<span>
+Embedded Systems: ESP32 · Arduino · IMU Sensors · RFID Systems · UART Communication · CAN Bus · Motor Control · ROS
+</span>
+</div>
+
+<div class="row">
+<span class="yr"></span>
+<span>
+AI / Edge Computing: NVIDIA Jetson · Federated Learning · Distributed Edge Systems
+</span>
+</div>
+
+<div class="row">
+<span class="yr"></span>
+<span>
+Tools: Git · GitHub · Linux · Fusion360 · Figma · Excel
+</span>
+</div>
+
+</section>
+
+<!-- LEADERSHIP -->
+<section>
+  <h2>Leadership & Extracurriculars</h2>
+
+  <div class="row">
+    <span class="yr">2026</span>
+    <span>
+      <strong>Vice President — Grub Club (SUTD)</strong> — Led events and community activities for SUTD’s food and cooking club.
+    </span>
+  </div>
+
+  <div class="row">
+    <span class="yr">2026</span>
+    <span>
+      <strong>Events Director — SQS (SUTD Quantum Society)</strong> — Organised technical and community events related to quantum technologies and outreach.
+    </span>
+  </div>
+
+  <div class="row">
+    <span class="yr">2026</span>
+    <span>
+      <strong>SEMICON Malaysia Bootcamp Participant</strong> — Participated in semiconductor industry workshops, networking sessions, and manufacturing exposure programmes in Kuala Lumpur.
+    </span>
+  </div>
+
+  <div class="row">
+    <span class="yr">2026</span>
+    <span>
+      <strong>Robotics Competitions Operations & Leadership</strong> — Led operations for Makerspace Friendlies 2026 and RoboClash 2025.
+    </span>
+  </div>
+
+  <div class="row">
+    <span class="yr">2026</span>
+    <span>
+      <strong>Hult Prize @ SUTD Organising Committee</strong> — Supported startup outreach and mentor coordination.
+    </span>
+  </div>
+
+  <div class="row">
+    <span class="yr"></span>
+    <span>
+      <strong>Guitarist</strong> — Performed at campus events and won 1st place at NTU Vinmeen competition.
+    </span>
+  </div>
+
+</section>
+
+</div>
+
+<script>
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+
+  const center = window.innerHeight / 2;
+
+  sections.forEach(sec => {
+
+    const rect = sec.getBoundingClientRect();
+    const mid = rect.top + rect.height / 2;
+
+    const dist = mid - center;
+    const percent = dist / center;
+
+    const rotate = percent * 30;
+
+    sec.style.transform = `
+      perspective(1400px)
+      rotateX(${-rotate}deg)
+    `;
+
+    const opacity = 1 - Math.abs(percent) * 0.22;
+
+    sec.style.opacity = Math.max(0.7, opacity);
+
+  });
+
+});
+</script>
+
+</body>
+</html>

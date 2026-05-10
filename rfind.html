@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>RFIND</title>
+
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f15304;
+  color:white;
+  font-family:Arial,sans-serif;
+  overflow-x:hidden;
+  line-height:1.7;
+}
+
+/* FADE */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  left:0;
+  width:100%;
+  height:120px;
+  pointer-events:none;
+  z-index:10;
+}
+
+body::before{
+  top:0;
+  background:linear-gradient(#c24a00, transparent);
+}
+
+body::after{
+  bottom:0;
+  background:linear-gradient(transparent, #c24a00);
+}
+
+/* WRAP */
+.wrap{
+  max-width:1550px;
+  margin:auto;
+  padding:90px 70px 140px;
+}
+
+/* BACK */
+.back{
+  display:inline-block;
+  color:white;
+  text-decoration:none;
+  font-size:20px;
+  margin-bottom:36px;
+  opacity:0.85;
+}
+
+.back:hover{
+  opacity:1;
+}
+
+/* TITLE */
+h1{
+  font-size:88px;
+  font-style:italic;
+  line-height:1;
+  margin-bottom:22px;
+}
+
+/* SUBTITLE */
+.hero-subtitle{
+  font-size:42px;
+  font-weight:400;
+  line-height:1.35;
+  max-width:1200px;
+  margin-bottom:55px;
+  opacity:0.96;
+}
+
+/* GRID */
+.project-layout{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:70px;
+  align-items:start;
+}
+
+/* TEXT */
+.project-text p{
+  font-size:24px;
+  margin-bottom:34px;
+  max-width:920px;
+}
+
+/* SECTION TITLE */
+.section-title{
+  font-size:42px;
+  font-weight:700;
+  margin-top:85px;
+  margin-bottom:26px;
+  border-bottom:1px solid rgba(255,255,255,0.2);
+  padding-bottom:12px;
+}
+
+/* LIST */
+ul{
+  padding-left:30px;
+}
+
+li{
+  font-size:24px;
+  margin-bottom:18px;
+}
+
+/* RIGHT IMAGE COLUMN */
+.project-images{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  position:sticky;
+  top:120px;
+}
+
+.project-images img{
+  width:100%;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.15);
+  transition:0.25s ease;
+}
+
+.project-images img:hover{
+  transform:scale(1.02);
+}
+
+/* BOX */
+.linkedin-box{
+  margin-top:20px;
+  padding:28px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.05);
+  max-width:760px;
+}
+
+.linkedin-box h2{
+  font-size:34px;
+  margin-bottom:14px;
+  font-weight:700;
+}
+
+.linkedin-box p{
+  font-size:22px;
+  margin-bottom:0;
+}
+
+/* MOBILE */
+@media(max-width:1100px){
+
+.project-layout{
+  grid-template-columns:1fr;
+}
+
+.project-images{
+  position:static;
+  flex-direction:row;
+  overflow-x:auto;
+}
+
+.project-images img{
+  min-width:320px;
+}
+
+h1{
+  font-size:58px;
+}
+
+.hero-subtitle{
+  font-size:28px;
+}
+
+.project-text p,
+li{
+  font-size:21px;
+}
+
+.section-title{
+  font-size:32px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<a class="back" href="home.html">← Back to Portfolio</a>
+
+<h1>RFIND</h1>
+
+<div class="hero-subtitle">
+Smart RFID-enabled inventory system integrating ESP32 microcontrollers, real-time tracking, web dashboards, and IoT automation.
+</div>
+
+<div class="project-layout">
+
+  <!-- LEFT -->
+  <div class="project-text">
+
+    <div class="linkedin-box">
+
+      <h2>DTI Best User-Centred Approach Nominee</h2>
+
+      <p>
+        RFIND was nominated for the DTI Best User-Centred Approach Award for its practical and intuitive inventory management experience.
+      </p>
+
+    </div>
+
+    <div class="section-title">
+      System Demonstration
+    </div>
+
+    <p>
+      RFIND combines RFID-based inventory localization, embedded firmware, wireless communication, and real-time web monitoring into a single integrated inventory management platform.
+    </p>
+
+    <p>
+      The system was designed to improve usability, reduce manual inventory tracking, and provide a more intuitive real-time inventory experience through both physical and digital interfaces.
+    </p>
+
+    <div class="section-title">
+      Overview
+    </div>
+
+    <p>
+      RFIND is an IoT-based smart inventory shelf that automates inventory management using RFID technology and ESP32 microcontrollers.
+    </p>
+
+    <p>
+      Each item is tagged with an RFID label, allowing the system to detect when an item is borrowed or returned while displaying its location through LED indicators.
+    </p>
+
+    <p>
+      All inventory activity is logged automatically to Google Sheets while the dashboard updates in real time through the Google Sheets API.
+    </p>
+
+    <div class="section-title">
+      Web Dashboard + Real-Time Tracking
+    </div>
+
+    <p>
+      A responsive web dashboard was developed using React, TypeScript, and Vite to visualize inventory activity and item locations in real time.
+    </p>
+
+    <p>
+      The dashboard supports live synchronization, search and filtering systems, inventory monitoring, and LED control communication with ESP32 devices.
+    </p>
+
+    <div class="section-title">
+      Embedded Systems + Hardware Integration
+    </div>
+
+    <p>
+      RFIND integrates RFID readers, ESP32 microcontrollers, LEDs, and wireless communication systems into a full hardware-software prototype.
+    </p>
+
+    <p>
+      Embedded firmware was implemented in Arduino C++ to manage RFID scanning, device communication, inventory detection, and LED guidance systems.
+    </p>
+
+    <div class="section-title">
+      Technologies Used
+    </div>
+
+    <ul>
+      <li>ESP32 microcontrollers</li>
+      <li>Arduino C++</li>
+      <li>RFID systems</li>
+      <li>React + TypeScript + Vite</li>
+      <li>Google Sheets API</li>
+      <li>HTTP communication</li>
+      <li>IoT prototyping</li>
+      <li>Real-time web systems</li>
+      <li>Hardware-software integration</li>
+    </ul>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="project-images">
+
+    <img src="images/rfindfullshelf.jpg">
+
+    <img src="images/rfindgrp.jpg">
+
+    <img src="images/rfindcircuit.jpg">
+
+    <img src="images/rfindpresentation.jpg">
+
+  </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

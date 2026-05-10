@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Project Gaitway</title>
+
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f15304;
+  color:white;
+  font-family:Arial,sans-serif;
+  overflow-x:hidden;
+  line-height:1.7;
+}
+
+/* FADE */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  left:0;
+  width:100%;
+  height:120px;
+  pointer-events:none;
+  z-index:10;
+}
+
+body::before{
+  top:0;
+  background:linear-gradient(#c24a00, transparent);
+}
+
+body::after{
+  bottom:0;
+  background:linear-gradient(transparent, #c24a00);
+}
+
+/* WRAP */
+.wrap{
+  max-width:1550px;
+  margin:auto;
+  padding:90px 70px 140px;
+}
+
+/* BACK */
+.back{
+  display:inline-block;
+  color:white;
+  text-decoration:none;
+  font-size:20px;
+  margin-bottom:36px;
+  opacity:0.85;
+}
+
+.back:hover{
+  opacity:1;
+}
+
+/* TITLE */
+h1{
+  font-size:88px;
+  font-style:italic;
+  line-height:1;
+  margin-bottom:22px;
+}
+
+/* BIG SUBTITLE */
+.hero-subtitle{
+  font-size:42px;
+  font-weight:400;
+  line-height:1.35;
+  max-width:1200px;
+  margin-bottom:55px;
+  opacity:0.96;
+}
+
+/* GRID */
+.project-layout{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:70px;
+  align-items:start;
+}
+
+/* TEXT */
+.project-text p{
+  font-size:24px;
+  margin-bottom:34px;
+  max-width:920px;
+}
+
+/* SECTION TITLE */
+.section-title{
+  font-size:42px;
+  font-weight:700;
+  margin-top:85px;
+  margin-bottom:26px;
+  border-bottom:1px solid rgba(255,255,255,0.2);
+  padding-bottom:12px;
+}
+
+/* QUOTE */
+.quote{
+  font-size:34px;
+  line-height:1.5;
+  font-style:italic;
+  margin:65px 0;
+  opacity:0.95;
+}
+
+/* LIST */
+ul{
+  padding-left:30px;
+}
+
+li{
+  font-size:24px;
+  margin-bottom:18px;
+}
+
+/* IMAGES */
+.project-images{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  position:sticky;
+  top:120px;
+}
+
+.project-images img{
+  width:100%;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.15);
+  transition:0.25s ease;
+}
+
+.project-images img:hover{
+  transform:scale(1.02);
+}
+
+/* VIDEO */
+.video-wrap{
+  margin-top:55px;
+  margin-bottom:70px;
+}
+
+.video-wrap video{
+  width:100%;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+/* LINKEDIN */
+.linkedin-box{
+  margin-top:20px;
+  padding:28px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.05);
+  max-width:760px;
+}
+
+.linkedin-box h2{
+  font-size:34px;
+  margin-bottom:14px;
+}
+
+.linkedin-box p{
+  font-size:22px;
+  margin-bottom:22px;
+}
+
+.linkedin-btn{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.35);
+  color:white;
+  text-decoration:none;
+  font-size:20px;
+  transition:0.25s ease;
+}
+
+.linkedin-btn:hover{
+  background:white;
+  color:#f15304;
+}
+
+/* MOBILE */
+@media(max-width:1100px){
+
+.project-layout{
+  grid-template-columns:1fr;
+}
+
+.project-images{
+  position:static;
+  flex-direction:row;
+  overflow-x:auto;
+}
+
+.project-images img{
+  min-width:320px;
+}
+
+h1{
+  font-size:58px;
+}
+
+.hero-subtitle{
+  font-size:28px;
+}
+
+.project-text p,
+li{
+  font-size:21px;
+}
+
+.quote{
+  font-size:28px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<a class="back" href="home.html">← Back to Portfolio</a>
+
+<h1>Project Gaitway</h1>
+
+<div class="hero-subtitle">
+Wearable Stroke Rehabilitation Exoskeleton integrating sensing, motor assistance, and balance correction systems.
+</div>
+
+<div class="project-layout">
+
+  <!-- LEFT -->
+  <div class="project-text">
+
+    <!-- LINKEDIN -->
+    <div class="linkedin-box">
+
+      <h2>LinkedIn Showcase</h2>
+
+      <p>
+        Project Gaitway was publicly showcased after the final presentation and engineering demo.
+      </p>
+
+      <a
+      class="linkedin-btn"
+      href="https://www.linkedin.com/posts/akhila-mokkapati_after-days-and-nights-in-the-imbs-we-activity-7457268885084377088-pAhf?utm_source=share&utm_medium=member_desktop&rcm=ACoAACvVlGcBXuPpREziErDU5v1OpjEC-u0J3hs"
+      target="_blank">
+
+      View LinkedIn Post →
+
+      </a>
+
+    </div>
+
+    <div class="section-title">
+      Overview
+    </div>
+
+    <p>
+      Project Gaitway is a wearable assistive exoskeleton system designed to help stroke patients improve mobility, gait propagation, and balance while reducing the risk of falls.
+    </p>
+
+    <p>
+      The project combines both physical and neurological rehabilitation methods through a modular exoskeleton platform integrating real-time sensing, motorized gait assistance, and Galvanic Vestibular Stimulation (GVS).
+    </p>
+
+    <p>
+      Developed within approximately 5 weeks under SUTD’s Engineering for Good programme, the prototype was later awarded Top Course Project during the final showcase.
+    </p>
+
+    <div class="quote">
+      “How might we help stroke patients maintain balance while walking or standing to reduce the risk of falls?”
+    </div>
+
+    <div class="section-title">
+      System Architecture
+    </div>
+
+    <p>
+      The project consists of three integrated subsystems working together as a single assistive platform:
+    </p>
+
+    <ul>
+      <li>Sensor + Control System</li>
+      <li>Motor / Mechanical Exoskeleton System</li>
+      <li>Galvanic Vestibular Stimulation (GVS) System</li>
+    </ul>
+
+    <div class="section-title">
+      Sensing + Embedded Control
+    </div>
+
+    <p>
+      The sensing architecture uses BNO055 IMUs mounted on the waist and legs to estimate gait movement, body orientation, and instability in real time.
+    </p>
+
+    <p>
+      ESP32 microcontrollers were used for sensor reading, gait phase detection, subsystem communication, motor triggering, and balance correction logic.
+    </p>
+
+    <p>
+      The gait detection pipeline used movement thresholds, pitch-rate calculations, and orientation comparisons between multiple IMUs to identify walking states and instability conditions.
+    </p>
+
+    <div class="section-title">
+      Mechanical Exoskeleton System
+    </div>
+
+    <p>
+      The exoskeleton subsystem focused on smoother gait propagation, biomechanical alignment, and wearable modularity.
+    </p>
+
+    <ul>
+      <li>NEMA 23 stepper motors</li>
+      <li>Capstan drive systems</li>
+      <li>Belt-driven transmission</li>
+      <li>Gear reduction systems</li>
+    </ul>
+
+    <p>
+      A capstan-based design approach was selected to reduce backlash, preserve torque, improve smoothness, and remain manufacturable within budget constraints.
+    </p>
+
+    <div class="section-title">
+      Balance Correction using GVS
+    </div>
+
+    <p>
+      The project also explored Galvanic Vestibular Stimulation (GVS) for neurological balance correction.
+    </p>
+
+    <p>
+      Using body tilt data from IMUs, the system could trigger controlled vestibular stimulation to assist with balance correction during walking.
+    </p>
+
+    <ul>
+      <li>Modified Howland Current Pump architecture</li>
+      <li>Bipolar stimulation control</li>
+      <li>Stable current regulation</li>
+      <li>Real-time left/right balance correction triggering</li>
+    </ul>
+
+    <div class="section-title">
+      Focus Areas
+    </div>
+
+    <ul>
+      <li>Embedded systems</li>
+      <li>ESP32 development</li>
+      <li>Sensor fusion</li>
+      <li>Motor control systems</li>
+      <li>IMU sensing</li>
+      <li>UART + I2C communication</li>
+      <li>Hardware-software integration</li>
+      <li>Wearable robotics</li>
+      <li>Rehabilitation engineering</li>
+      <li>Rapid prototyping</li>
+    </ul>
+
+    <div class="section-title">
+      Long-Term Vision
+    </div>
+
+    <p>
+      The long-term goal of Project Gaitway is to create a modular, affordable, and clinically useful rehabilitation platform that helps stroke patients regain mobility, balance, confidence, and independence in everyday life.
+    </p>
+
+    <!-- VIDEO -->
+    <div class="video-wrap">
+
+      <video controls>
+        <source src="images/gaitwayvideo.mp4" type="video/mp4">
+      </video>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="project-images">
+
+    <img src="images/gaitwayprod.jpg">
+
+    <img src="images/gaitwayposter.png">
+
+    <img src="images/gaitwayfungrp.jpg">
+
+    <img src="images/gaitwaycert.jpg">
+
+  </div>
+
+</div>
+
+</div>
+
+</body>
+</html>
