@@ -83,9 +83,34 @@ h1{
   opacity:0.96;
 }
 
+/* GRID */
+.project-layout{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:70px;
+  align-items:start;
+}
+
+/* SIDE PHOTO */
+.side-photo{
+  position:sticky;
+  top:120px;
+}
+
+.side-photo img{
+  width:100%;
+  max-width:420px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.section-title.first{
+  margin-top:0;
+}
+
 /* TEXT */
 .project-text{
-  max-width:1000px;
+  min-width:0;
 }
 
 .project-text p{
@@ -150,6 +175,15 @@ li{
 /* MOBILE */
 @media(max-width:1100px){
 
+.project-layout{
+  grid-template-columns:1fr;
+}
+
+.side-photo{
+  position:static;
+  max-width:420px;
+}
+
 h1{
   font-size:58px;
 }
@@ -180,13 +214,11 @@ li{
 Project Gaitway, Team U-43. A wearable lower-limb rehabilitation system for stroke survivors, taken through to the final round.
 </div>
 
+<div class="project-layout">
+
 <div class="project-text">
 
-  <div class="project-images">
-    <img src="eic-team.jpg" alt="Team U-43 with the 3D-printed planetary gearbox">
-  </div>
-
-  <div class="section-title">
+  <div class="section-title first">
     Overview
   </div>
 
@@ -292,6 +324,12 @@ Project Gaitway, Team U-43. A wearable lower-limb rehabilitation system for stro
     <li>GVS hardware bench validated. No stimulation was applied to human participants, for safety</li>
     <li>Next steps: clinical validation of GVS, bilateral actuation, and adaptive machine learning to personalise assistance</li>
   </ul>
+
+</div>
+
+<div class="side-photo">
+  <img src="eic-team.jpg" alt="Team U-43 with the 3D-printed planetary gearbox">
+</div>
 
 </div>
 
