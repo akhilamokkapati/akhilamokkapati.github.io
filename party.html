@@ -2,11 +2,26 @@
 <html>
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Side Projects</title>
 
 <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+  --mustard:#e0a030;
+  --mustard-dark:#c98a1c;
+  --cream:#f6e6bd;
+  --brown:#4a2a14;
+  --rust:#a3271b;
+  --orange:#d4591a;
+  --olive:#6b7a2f;
+  --font:"Jost","Futura","Century Gothic","Trebuchet MS",Arial,sans-serif;
+}
 
 *{
   margin:0;
@@ -15,120 +30,254 @@
 }
 
 body{
-  background:#f15304;
-  color:white;
-  font-family:Arial,sans-serif;
+  background:var(--mustard);
+  color:var(--brown);
+  font-family:var(--font);
+  line-height:1.6;
   overflow-x:hidden;
-  line-height:1.7;
+  min-height:100vh;
 }
 
-/* FADE */
-body::before,
-body::after{
+/* felt and paper grain */
+body::before{
   content:"";
   position:fixed;
-  left:0;
-  width:100%;
-  height:120px;
+  inset:0;
   pointer-events:none;
-  z-index:10;
+  z-index:1;
+  opacity:0.16;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.1  0 0 0 0 0.05  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-body::before{
-  top:0;
-  background:linear-gradient(#c24a00, transparent);
+/* falling leaves, moved in held frames like stop motion */
+.leaf{
+  position:fixed;
+  top:-40px;
+  left:var(--x);
+  width:var(--s);
+  height:calc(var(--s) * 0.75);
+  background:var(--c);
+  border-radius:0 100% 0 100%;
+  box-shadow:1px 2px 0 rgba(0,0,0,0.2);
+  pointer-events:none;
+  z-index:2;
+  animation:
+    fall var(--d) steps(70, end) infinite,
+    spin 1.1s steps(1, end) infinite;
+  animation-delay:var(--delay), var(--delay);
 }
 
-body::after{
-  bottom:0;
-  background:linear-gradient(transparent, #c24a00);
+@keyframes fall{
+  from{ translate:0 0; }
+  to{ translate:var(--drift) 115vh; }
 }
 
-/* WRAP */
-.wrap{
-  max-width:1550px;
-  margin:auto;
-  padding:90px 70px 140px;
+@keyframes spin{
+  0%  { rotate:-20deg; }
+  20% { rotate:25deg; }
+  40% { rotate:70deg; }
+  60% { rotate:110deg; }
+  80% { rotate:160deg; }
+  100%{ rotate:200deg; }
 }
 
-/* BACK */
+/* the hand-jittered boil */
+@keyframes boil{
+  0%   { rotate:-0.5deg; translate:0 0; }
+  25%  { rotate:0.4deg;  translate:1px -1px; }
+  50%  { rotate:-0.3deg; translate:-1px 1px; }
+  75%  { rotate:0.6deg;  translate:1px 0; }
+  100% { rotate:-0.5deg; translate:0 0; }
+}
+
+.boil{
+  animation:boil 0.6s steps(1, end) infinite;
+}
+
+.boil.slow{
+  animation-duration:0.9s;
+  animation-delay:0.2s;
+}
+
+/* STAGE */
+.stage{
+  position:relative;
+  z-index:3;
+  max-width:860px;
+  margin:0 auto;
+  padding:48px 24px 90px;
+  text-align:center;
+}
+
 .back{
   display:inline-block;
-  color:white;
+  color:var(--brown);
   text-decoration:none;
-  font-size:20px;
-  margin-bottom:36px;
-  opacity:0.85;
+  font-size:14px;
+  font-weight:500;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  margin-bottom:34px;
+  padding-bottom:3px;
+  border-bottom:2px solid var(--brown);
 }
 
 .back:hover{
-  opacity:1;
+  color:var(--rust);
+  border-color:var(--rust);
 }
 
-/* TITLE */
+/* TITLE CARD */
+.fox{
+  width:150px;
+  height:150px;
+  margin:0 auto 6px;
+  display:block;
+}
+
+.fox .ear{
+  transform-box:fill-box;
+  transform-origin:50% 100%;
+  animation:ear 0.8s steps(1, end) infinite;
+}
+
+.fox .ear.r{
+  animation-delay:0.3s;
+}
+
+@keyframes ear{
+  0%  { rotate:0deg; }
+  30% { rotate:-5deg; }
+  60% { rotate:3deg; }
+  100%{ rotate:0deg; }
+}
+
+.credit{
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
 h1{
-  font-size:88px;
-  font-style:italic;
-  line-height:1;
-  margin-bottom:22px;
-}
-
-.hero-subtitle{
-  font-size:42px;
-  font-weight:400;
-  line-height:1.35;
-  max-width:1200px;
-  margin-bottom:55px;
-  opacity:0.96;
-}
-
-p{
-  font-size:24px;
-  max-width:920px;
-}
-
-.section-title{
-  font-size:42px;
+  font-size:64px;
+  line-height:1.05;
   font-weight:700;
-  margin-top:70px;
-  margin-bottom:22px;
-  border-bottom:1px solid rgba(255,255,255,0.2);
-  padding-bottom:12px;
-  max-width:920px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--brown);
+  margin-bottom:12px;
 }
 
-.side-project p{
-  margin-bottom:16px;
+.tagline{
+  font-size:20px;
+  font-style:italic;
+  font-family:Georgia,"Times New Roman",serif;
+  margin-bottom:44px;
+}
+
+.rule{
+  width:120px;
+  height:0;
+  border-top:3px double var(--brown);
+  margin:0 auto 48px;
+}
+
+/* CHAPTER CARDS */
+.chapter{
+  position:relative;
+  background:var(--cream);
+  color:var(--brown);
+  margin:0 auto 54px;
+  padding:34px 30px 30px;
+  max-width:640px;
+  border:4px solid var(--brown);
+  box-shadow:
+    0 0 0 6px var(--cream),
+    0 0 0 9px var(--brown),
+    8px 12px 0 9px rgba(74,42,20,0.35);
+}
+
+.chapter::before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:2px dashed var(--orange);
+  pointer-events:none;
+}
+
+.chapter-no{
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:0.34em;
+  text-transform:uppercase;
+  color:var(--rust);
+  margin-bottom:6px;
+}
+
+.chapter h2{
+  font-size:46px;
+  line-height:1.1;
+  font-weight:700;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+.chapter .sub{
+  font-size:19px;
+  font-style:italic;
+  font-family:Georgia,"Times New Roman",serif;
+  margin-bottom:18px;
+}
+
+.chapter p.desc{
+  font-size:18px;
+  max-width:520px;
+  margin:0 auto 22px;
+}
+
+.tag{
+  display:inline-block;
+  background:var(--rust);
+  color:var(--cream);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  padding:5px 14px;
+  margin-bottom:8px;
 }
 
 .status{
-  opacity:0.85;
-  font-size:20px;
+  font-size:15px;
+  opacity:0.9;
 }
 
-.side-project + p.status{
-  margin-top:60px;
+.footer-note{
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  margin-top:20px;
 }
 
-/* MOBILE */
-@media(max-width:1100px){
-
-h1{
-  font-size:58px;
+@media(max-width:640px){
+  h1{ font-size:40px; }
+  .chapter{ padding:28px 18px 24px; }
+  .chapter h2{ font-size:34px; }
+  .chapter p.desc{ font-size:16px; }
+  .fox{ width:120px; height:120px; }
 }
 
-.hero-subtitle{
-  font-size:28px;
-}
-
-p{
-  font-size:21px;
-}
-
-.section-title{
-  font-size:32px;
-}
-
+@media(prefers-reduced-motion:reduce){
+  .leaf,
+  .boil,
+  .fox .ear{
+    animation:none !important;
+  }
 }
 
 </style>
@@ -136,33 +285,59 @@ p{
 
 <body>
 
-<div class="wrap">
+<span class="leaf" style="--x:6%;  --s:22px; --c:#a3271b; --d:11s; --delay:0s;   --drift:60px"></span>
+<span class="leaf" style="--x:18%; --s:16px; --c:#6b7a2f; --d:9s;  --delay:-4s;  --drift:-50px"></span>
+<span class="leaf" style="--x:31%; --s:26px; --c:#d4591a; --d:13s; --delay:-8s;  --drift:70px"></span>
+<span class="leaf" style="--x:44%; --s:14px; --c:#f6e6bd; --d:10s; --delay:-2s;  --drift:-40px"></span>
+<span class="leaf" style="--x:57%; --s:20px; --c:#6b7a2f; --d:12s; --delay:-6s;  --drift:55px"></span>
+<span class="leaf" style="--x:69%; --s:24px; --c:#a3271b; --d:14s; --delay:-10s; --drift:-65px"></span>
+<span class="leaf" style="--x:80%; --s:15px; --c:#d4591a; --d:9.5s;--delay:-3s;  --drift:45px"></span>
+<span class="leaf" style="--x:92%; --s:21px; --c:#f6e6bd; --d:11.5s;--delay:-7s; --drift:-55px"></span>
 
-<a class="back" href="index.html">← Back to Portfolio</a>
+<div class="stage">
 
-<h1>Side Projects</h1>
+  <a class="back" href="index.html">← Back to Portfolio</a>
 
-<div class="hero-subtitle">
-Things I build purely for fun.
-</div>
+  <svg class="fox boil slow" viewBox="0 0 200 200" role="img" aria-label="Paper cutout fox">
+    <g class="ear l"><polygon points="32,22 84,78 26,98" fill="#d4591a"/><polygon points="42,46 70,76 40,88" fill="#4a2a14"/></g>
+    <g class="ear r"><polygon points="168,22 116,78 174,98" fill="#d4591a"/><polygon points="158,46 130,76 160,88" fill="#4a2a14"/></g>
+    <polygon points="38,60 100,52 162,60 172,112 100,184 28,112" fill="#d4591a"/>
+    <polygon points="28,112 100,184 100,128 66,104" fill="#f6e6bd"/>
+    <polygon points="172,112 100,184 100,128 134,104" fill="#f6e6bd"/>
+    <polygon points="100,52 118,92 100,128 82,92" fill="#f6e6bd" opacity="0.9"/>
+    <ellipse cx="72" cy="98" rx="9" ry="6" fill="#4a2a14" transform="rotate(18 72 98)"/>
+    <ellipse cx="128" cy="98" rx="9" ry="6" fill="#4a2a14" transform="rotate(-18 128 98)"/>
+    <polygon points="90,168 110,168 100,184" fill="#4a2a14"/>
+  </svg>
 
-<div class="side-project">
-  <div class="section-title">Bimba</div>
-  <p>
-    A retro pocket digicam built on a XIAO ESP32S3 Sense, with a small TFT viewfinder, RTC-stamped photos, and a WiFi file manager. Includes a custom PCB.
-  </p>
-  <p class="status">In progress: camera and SD firmware working, PCB in layout.</p>
-</div>
+  <div class="credit">An Akhila Mokkapati production</div>
+  <h1 class="boil">Side Projects</h1>
+  <div class="tagline">Cunning plans, built purely for fun.</div>
+  <div class="rule"></div>
 
-<div class="side-project">
-  <div class="section-title">Lipi</div>
-  <p>
-    A low-cost pocket e-reader built on a XIAO ESP32-S3, a 3.7" e-paper display, and a microSD card for books. Includes a custom PCB.
-  </p>
-  <p class="status">In progress: firmware flashed to hardware, PCB routing underway.</p>
-</div>
+  <section class="chapter boil slow">
+    <div class="chapter-no">Chapter One</div>
+    <h2>Bimba</h2>
+    <div class="sub">The Pocket Camera</div>
+    <p class="desc">
+      A retro pocket digicam built on a XIAO ESP32S3 Sense, with a small TFT viewfinder, RTC-stamped photos, and a WiFi file manager. Includes a custom PCB.
+    </p>
+    <div class="tag">In production</div>
+    <p class="status">Camera and SD firmware working, PCB in layout.</p>
+  </section>
 
-<p class="status">More coming soon :)</p>
+  <section class="chapter boil">
+    <div class="chapter-no">Chapter Two</div>
+    <h2>Lipi</h2>
+    <div class="sub">The Pocket Reader</div>
+    <p class="desc">
+      A low-cost pocket e-reader built on a XIAO ESP32-S3, a 3.7" e-paper display, and a microSD card for books. Includes a custom PCB.
+    </p>
+    <div class="tag">In production</div>
+    <p class="status">Firmware flashed to hardware, PCB routing underway.</p>
+  </section>
+
+  <div class="footer-note">More cunning plans coming soon</div>
 
 </div>
 
