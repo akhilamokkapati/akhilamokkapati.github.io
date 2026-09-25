@@ -6,21 +6,16 @@
 <title>Side Projects</title>
 
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-  --mustard:#e0a030;
-  --mustard-dark:#c98a1c;
-  --cream:#f6e6bd;
-  --brown:#4a2a14;
-  --rust:#a3271b;
-  --orange:#d4591a;
-  --olive:#6b7a2f;
-  --font:"Jost","Futura","Century Gothic","Trebuchet MS",Arial,sans-serif;
+  --orange:#f15304;
+  --cream:#f8ecd0;
+  --ink:#3b2417;
+  --mustard:#ffd23f;
+  --teal:#2ec4b6;
+  --pink:#ff7aa2;
 }
 
 *{
@@ -30,15 +25,15 @@
 }
 
 body{
-  background:var(--mustard);
-  color:var(--brown);
-  font-family:var(--font);
+  background:var(--orange);
+  color:white;
+  font-family:Arial,sans-serif;
   line-height:1.6;
   overflow-x:hidden;
   min-height:100vh;
 }
 
-/* felt and paper grain */
+/* paper grain */
 body::before{
   content:"";
   position:fixed;
@@ -50,16 +45,81 @@ body::before{
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.1  0 0 0 0 0.05  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-/* falling leaves, moved in held frames like stop motion */
-.leaf{
+/* stop-motion motion: everything moves in held frames */
+@keyframes boil{
+  0%   { rotate:-0.5deg; translate:0 0; }
+  25%  { rotate:0.4deg;  translate:1px -1px; }
+  50%  { rotate:-0.3deg; translate:-1px 1px; }
+  75%  { rotate:0.6deg;  translate:1px 0; }
+  100% { rotate:-0.5deg; translate:0 0; }
+}
+
+.boil{
+  animation:boil 0.6s steps(1, end) infinite;
+}
+
+.boil.slow{
+  animation-duration:0.9s;
+  animation-delay:0.25s;
+}
+
+/* BUNTING */
+.bunting{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:90px;
+  display:flex;
+  justify-content:center;
+  overflow:hidden;
+  z-index:3;
+}
+
+.bunting::before{
+  content:"";
+  position:absolute;
+  top:10px;
+  left:0;
+  right:0;
+  border-top:3px solid var(--ink);
+  opacity:0.7;
+}
+
+.flag{
+  flex:none;
+  width:0;
+  height:0;
+  margin:10px 5px 0;
+  border-left:26px solid transparent;
+  border-right:26px solid transparent;
+  border-top:52px solid var(--cream);
+  transform-origin:50% 0;
+  animation:sway 1s steps(1, end) infinite;
+}
+
+.flag:nth-child(4n+1){ border-top-color:var(--cream); }
+.flag:nth-child(4n+2){ border-top-color:var(--mustard); animation-delay:0.25s; }
+.flag:nth-child(4n+3){ border-top-color:var(--teal);    animation-delay:0.5s; }
+.flag:nth-child(4n+4){ border-top-color:var(--pink);    animation-delay:0.75s; }
+
+@keyframes sway{
+  0%   { rotate:-4deg; }
+  33%  { rotate:3deg; }
+  66%  { rotate:-2deg; }
+  100% { rotate:-4deg; }
+}
+
+/* confetti pieces falling in held frames */
+.piece{
   position:fixed;
   top:-40px;
   left:var(--x);
   width:var(--s);
-  height:calc(var(--s) * 0.75);
+  height:var(--s);
   background:var(--c);
-  border-radius:0 100% 0 100%;
-  box-shadow:1px 2px 0 rgba(0,0,0,0.2);
+  border-radius:var(--br, 0);
+  clip-path:var(--cp, none);
   pointer-events:none;
   z-index:2;
   animation:
@@ -82,200 +142,131 @@ body::before{
   100%{ rotate:200deg; }
 }
 
-/* the hand-jittered boil */
-@keyframes boil{
-  0%   { rotate:-0.5deg; translate:0 0; }
-  25%  { rotate:0.4deg;  translate:1px -1px; }
-  50%  { rotate:-0.3deg; translate:-1px 1px; }
-  75%  { rotate:0.6deg;  translate:1px 0; }
-  100% { rotate:-0.5deg; translate:0 0; }
-}
-
-.boil{
-  animation:boil 0.6s steps(1, end) infinite;
-}
-
-.boil.slow{
-  animation-duration:0.9s;
-  animation-delay:0.2s;
-}
-
-/* STAGE */
+/* PAGE */
 .stage{
   position:relative;
   z-index:3;
-  max-width:860px;
+  max-width:820px;
   margin:0 auto;
-  padding:48px 24px 90px;
-  text-align:center;
+  padding:130px 24px 100px;
 }
 
 .back{
   display:inline-block;
-  color:var(--brown);
+  color:white;
   text-decoration:none;
-  font-size:14px;
-  font-weight:500;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  margin-bottom:34px;
-  padding-bottom:3px;
-  border-bottom:2px solid var(--brown);
-}
-
-.back:hover{
-  color:var(--rust);
-  border-color:var(--rust);
-}
-
-/* TITLE CARD */
-.fox{
-  width:150px;
-  height:150px;
-  margin:0 auto 6px;
-  display:block;
-}
-
-.fox .ear{
-  transform-box:fill-box;
-  transform-origin:50% 100%;
-  animation:ear 0.8s steps(1, end) infinite;
-}
-
-.fox .ear.r{
-  animation-delay:0.3s;
-}
-
-@keyframes ear{
-  0%  { rotate:0deg; }
-  30% { rotate:-5deg; }
-  60% { rotate:3deg; }
-  100%{ rotate:0deg; }
-}
-
-.credit{
-  font-size:13px;
-  font-weight:500;
-  letter-spacing:0.32em;
-  text-transform:uppercase;
-  margin-bottom:8px;
-}
-
-h1{
-  font-size:64px;
-  line-height:1.05;
-  font-weight:700;
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-  color:var(--brown);
-  margin-bottom:12px;
-}
-
-.tagline{
   font-size:20px;
-  font-style:italic;
-  font-family:Georgia,"Times New Roman",serif;
-  margin-bottom:44px;
-}
-
-.rule{
-  width:120px;
-  height:0;
-  border-top:3px double var(--brown);
-  margin:0 auto 48px;
-}
-
-/* CHAPTER CARDS */
-.chapter{
-  position:relative;
-  background:var(--cream);
-  color:var(--brown);
-  margin:0 auto 54px;
-  padding:34px 30px 30px;
-  max-width:640px;
-  border:4px solid var(--brown);
-  box-shadow:
-    0 0 0 6px var(--cream),
-    0 0 0 9px var(--brown),
-    8px 12px 0 9px rgba(74,42,20,0.35);
-}
-
-.chapter::before{
-  content:"";
-  position:absolute;
-  inset:8px;
-  border:2px dashed var(--orange);
-  pointer-events:none;
-}
-
-.chapter-no{
-  font-size:13px;
-  font-weight:500;
-  letter-spacing:0.34em;
-  text-transform:uppercase;
-  color:var(--rust);
-  margin-bottom:6px;
-}
-
-.chapter h2{
-  font-size:46px;
-  line-height:1.1;
-  font-weight:700;
-  letter-spacing:0.05em;
-  text-transform:uppercase;
-  margin-bottom:6px;
-}
-
-.chapter .sub{
-  font-size:19px;
-  font-style:italic;
-  font-family:Georgia,"Times New Roman",serif;
-  margin-bottom:18px;
-}
-
-.chapter p.desc{
-  font-size:18px;
-  max-width:520px;
-  margin:0 auto 22px;
-}
-
-.tag{
-  display:inline-block;
-  background:var(--rust);
-  color:var(--cream);
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:0.22em;
-  text-transform:uppercase;
-  padding:5px 14px;
-  margin-bottom:8px;
-}
-
-.status{
-  font-size:15px;
+  margin-bottom:36px;
   opacity:0.9;
 }
 
-.footer-note{
-  font-size:15px;
-  font-weight:500;
-  letter-spacing:0.28em;
+.back:hover{
+  opacity:1;
+}
+
+h1{
+  font-size:80px;
+  font-style:italic;
+  line-height:1;
+  margin-bottom:16px;
+}
+
+.hero-subtitle{
+  font-size:30px;
+  font-weight:400;
+  margin-bottom:64px;
+  opacity:0.96;
+}
+
+/* PAPER CARDS */
+.project{
+  position:relative;
+  background:var(--cream);
+  color:var(--ink);
+  max-width:640px;
+  margin:0 0 64px;
+  padding:38px 32px 30px;
+  box-shadow:7px 9px 0 rgba(59,36,23,0.35);
+}
+
+.project:nth-of-type(odd){
+  transform:rotate(-1.2deg);
+}
+
+.project:nth-of-type(even){
+  transform:rotate(1deg);
+  margin-left:auto;
+}
+
+/* washi tape holding the card up */
+.project::before{
+  content:"";
+  position:absolute;
+  top:-15px;
+  left:50%;
+  width:120px;
+  height:30px;
+  margin-left:-60px;
+  background:var(--teal);
+  opacity:0.75;
+  transform:rotate(-3deg);
+  clip-path:polygon(2% 0,98% 0,100% 20%,97% 40%,100% 60%,97% 80%,100% 100%,2% 100%,0 80%,3% 60%,0 40%,3% 20%);
+}
+
+.project:nth-of-type(even)::before{
+  background:var(--pink);
+  transform:rotate(3deg);
+}
+
+.project h2{
+  font-size:44px;
+  font-style:italic;
+  line-height:1.1;
+  margin-bottom:12px;
+}
+
+.project p.desc{
+  font-size:19px;
+  margin-bottom:22px;
+}
+
+.sticker{
+  display:inline-block;
+  background:var(--mustard);
+  color:var(--ink);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.1em;
   text-transform:uppercase;
-  margin-top:20px;
+  padding:5px 14px;
+  border-radius:999px;
+  transform:rotate(-2deg);
+  margin-right:8px;
+}
+
+.status{
+  display:inline;
+  font-size:16px;
+}
+
+.footer-note{
+  font-size:20px;
+  opacity:0.95;
 }
 
 @media(max-width:640px){
-  h1{ font-size:40px; }
-  .chapter{ padding:28px 18px 24px; }
-  .chapter h2{ font-size:34px; }
-  .chapter p.desc{ font-size:16px; }
-  .fox{ width:120px; height:120px; }
+  .stage{ padding-top:110px; }
+  h1{ font-size:48px; }
+  .hero-subtitle{ font-size:22px; margin-bottom:48px; }
+  .project h2{ font-size:34px; }
+  .project p.desc{ font-size:17px; }
+  .project:nth-of-type(even){ margin-left:0; }
 }
 
 @media(prefers-reduced-motion:reduce){
-  .leaf,
-  .boil,
-  .fox .ear{
+  .piece,
+  .flag,
+  .boil{
     animation:none !important;
   }
 }
@@ -285,61 +276,54 @@ h1{
 
 <body>
 
-<span class="leaf" style="--x:6%;  --s:22px; --c:#a3271b; --d:11s; --delay:0s;   --drift:60px"></span>
-<span class="leaf" style="--x:18%; --s:16px; --c:#6b7a2f; --d:9s;  --delay:-4s;  --drift:-50px"></span>
-<span class="leaf" style="--x:31%; --s:26px; --c:#d4591a; --d:13s; --delay:-8s;  --drift:70px"></span>
-<span class="leaf" style="--x:44%; --s:14px; --c:#f6e6bd; --d:10s; --delay:-2s;  --drift:-40px"></span>
-<span class="leaf" style="--x:57%; --s:20px; --c:#6b7a2f; --d:12s; --delay:-6s;  --drift:55px"></span>
-<span class="leaf" style="--x:69%; --s:24px; --c:#a3271b; --d:14s; --delay:-10s; --drift:-65px"></span>
-<span class="leaf" style="--x:80%; --s:15px; --c:#d4591a; --d:9.5s;--delay:-3s;  --drift:45px"></span>
-<span class="leaf" style="--x:92%; --s:21px; --c:#f6e6bd; --d:11.5s;--delay:-7s; --drift:-55px"></span>
+<div class="bunting" id="bunting"></div>
+
+<span class="piece" style="--x:6%;  --s:16px; --c:#f8ecd0; --br:50%; --d:11s; --delay:0s;   --drift:60px"></span>
+<span class="piece" style="--x:16%; --s:14px; --c:#2ec4b6; --d:9s;  --delay:-4s;  --drift:-50px"></span>
+<span class="piece" style="--x:28%; --s:20px; --c:#ffd23f; --cp:polygon(50% 0,100% 100%,0 100%); --d:13s; --delay:-8s; --drift:70px"></span>
+<span class="piece" style="--x:41%; --s:13px; --c:#ff7aa2; --br:50%; --d:10s; --delay:-2s; --drift:-40px"></span>
+<span class="piece" style="--x:54%; --s:18px; --c:#f8ecd0; --d:12s; --delay:-6s;  --drift:55px"></span>
+<span class="piece" style="--x:66%; --s:20px; --c:#2ec4b6; --cp:polygon(50% 0,100% 100%,0 100%); --d:14s; --delay:-10s; --drift:-65px"></span>
+<span class="piece" style="--x:78%; --s:14px; --c:#ffd23f; --br:50%; --d:9.5s; --delay:-3s; --drift:45px"></span>
+<span class="piece" style="--x:90%; --s:17px; --c:#ff7aa2; --d:11.5s; --delay:-7s; --drift:-55px"></span>
 
 <div class="stage">
 
   <a class="back" href="index.html">← Back to Portfolio</a>
 
-  <svg class="fox boil slow" viewBox="0 0 200 200" role="img" aria-label="Paper cutout fox">
-    <g class="ear l"><polygon points="32,22 84,78 26,98" fill="#d4591a"/><polygon points="42,46 70,76 40,88" fill="#4a2a14"/></g>
-    <g class="ear r"><polygon points="168,22 116,78 174,98" fill="#d4591a"/><polygon points="158,46 130,76 160,88" fill="#4a2a14"/></g>
-    <polygon points="38,60 100,52 162,60 172,112 100,184 28,112" fill="#d4591a"/>
-    <polygon points="28,112 100,184 100,128 66,104" fill="#f6e6bd"/>
-    <polygon points="172,112 100,184 100,128 134,104" fill="#f6e6bd"/>
-    <polygon points="100,52 118,92 100,128 82,92" fill="#f6e6bd" opacity="0.9"/>
-    <ellipse cx="72" cy="98" rx="9" ry="6" fill="#4a2a14" transform="rotate(18 72 98)"/>
-    <ellipse cx="128" cy="98" rx="9" ry="6" fill="#4a2a14" transform="rotate(-18 128 98)"/>
-    <polygon points="90,168 110,168 100,184" fill="#4a2a14"/>
-  </svg>
-
-  <div class="credit">An Akhila Mokkapati production</div>
   <h1 class="boil">Side Projects</h1>
-  <div class="tagline">Cunning plans, built purely for fun.</div>
-  <div class="rule"></div>
+  <div class="hero-subtitle">Things I build purely for fun.</div>
 
-  <section class="chapter boil slow">
-    <div class="chapter-no">Chapter One</div>
+  <section class="project boil slow">
     <h2>Bimba</h2>
-    <div class="sub">The Pocket Camera</div>
     <p class="desc">
       A retro pocket digicam built on a XIAO ESP32S3 Sense, with a small TFT viewfinder, RTC-stamped photos, and a WiFi file manager. Includes a custom PCB.
     </p>
-    <div class="tag">In production</div>
-    <p class="status">Camera and SD firmware working, PCB in layout.</p>
+    <span class="sticker">In progress</span>
+    <span class="status">Camera and SD firmware working, PCB in layout.</span>
   </section>
 
-  <section class="chapter boil">
-    <div class="chapter-no">Chapter Two</div>
+  <section class="project boil">
     <h2>Lipi</h2>
-    <div class="sub">The Pocket Reader</div>
     <p class="desc">
       A low-cost pocket e-reader built on a XIAO ESP32-S3, a 3.7" e-paper display, and a microSD card for books. Includes a custom PCB.
     </p>
-    <div class="tag">In production</div>
-    <p class="status">Firmware flashed to hardware, PCB routing underway.</p>
+    <span class="sticker">In progress</span>
+    <span class="status">Firmware flashed to hardware, PCB routing underway.</span>
   </section>
 
-  <div class="footer-note">More cunning plans coming soon</div>
+  <div class="footer-note">More coming soon :)</div>
 
 </div>
+
+<script>
+const bunting = document.getElementById("bunting");
+for (let i = 0; i < 48; i++) {
+  const f = document.createElement("span");
+  f.className = "flag";
+  bunting.appendChild(f);
+}
+</script>
 
 </body>
 </html>
