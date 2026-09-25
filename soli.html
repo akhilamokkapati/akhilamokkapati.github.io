@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Soli</title>
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f15304;
+  color:white;
+  font-family:Arial,sans-serif;
+  overflow-x:hidden;
+  line-height:1.7;
+}
+
+/* FADE */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  left:0;
+  width:100%;
+  height:120px;
+  pointer-events:none;
+  z-index:10;
+}
+
+body::before{
+  top:0;
+  background:linear-gradient(#c24a00, transparent);
+}
+
+body::after{
+  bottom:0;
+  background:linear-gradient(transparent, #c24a00);
+}
+
+/* WRAP */
+.wrap{
+  max-width:1550px;
+  margin:auto;
+  padding:90px 70px 140px;
+}
+
+/* BACK */
+.back{
+  display:inline-block;
+  color:white;
+  text-decoration:none;
+  font-size:20px;
+  margin-bottom:36px;
+  opacity:0.85;
+}
+
+.back:hover{
+  opacity:1;
+}
+
+/* TITLE */
+h1{
+  font-size:88px;
+  font-style:italic;
+  line-height:1;
+  margin-bottom:22px;
+}
+
+/* BIG SUBTITLE */
+.hero-subtitle{
+  font-size:42px;
+  font-weight:400;
+  line-height:1.35;
+  max-width:1200px;
+  margin-bottom:20px;
+  opacity:0.96;
+}
+
+.meta{
+  font-size:22px;
+  opacity:0.85;
+  margin-bottom:55px;
+}
+
+/* TEXT */
+.project-text{
+  max-width:1000px;
+}
+
+.project-text p{
+  font-size:24px;
+  margin-bottom:34px;
+  max-width:920px;
+}
+
+/* SECTION TITLE */
+.section-title{
+  font-size:42px;
+  font-weight:700;
+  margin-top:85px;
+  margin-bottom:26px;
+  border-bottom:1px solid rgba(255,255,255,0.2);
+  padding-bottom:12px;
+}
+
+.section-title.first{
+  margin-top:0;
+}
+
+/* QUOTE */
+.quote{
+  font-size:32px;
+  line-height:1.5;
+  font-style:italic;
+  margin:50px 0;
+  opacity:0.95;
+  max-width:920px;
+}
+
+/* LIST */
+ul{
+  padding-left:30px;
+}
+
+li{
+  font-size:24px;
+  margin-bottom:18px;
+}
+
+/* MOBILE */
+@media(max-width:1100px){
+
+h1{
+  font-size:58px;
+}
+
+.hero-subtitle{
+  font-size:28px;
+}
+
+.project-text p,
+li{
+  font-size:21px;
+}
+
+.quote{
+  font-size:26px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<a class="back" href="index.html">← Back to Portfolio</a>
+
+<h1>Soli</h1>
+
+<div class="hero-subtitle">
+A hands-off companion for people living with dementia.
+</div>
+
+<div class="meta">
+SUTD Baby Shark Fund (BSF) 2026 grant project | July to November 2026
+</div>
+
+<div class="project-text">
+
+  <div class="section-title first">
+    Overview
+  </div>
+
+  <p>
+    Soli is a smart companion device designed for elderly people living with dementia. It combines a digital memory diary, gentle voice and visual reminders, adaptive AI, and emotion-aware companionship in a cute, pet-like form. The project received S$2,000 in funding through SUTD's Baby Shark Fund.
+  </p>
+
+  <div class="section-title">
+    The Problem
+  </div>
+
+  <p>
+    Most dementia products on the market are single-purpose tools focused on safety or activities. Very few address the emotional side of living with dementia: loneliness, confusion, and the need for comfort and routine. Soli fills this gap by bringing companionship, routine support, cognitive engagement, and family connection together in one device.
+  </p>
+
+  <div class="quote">
+    A Tamagotchi asks its user to keep it alive. Soli asks nothing of the patient and cares for them instead.
+  </div>
+
+  <div class="section-title">
+    Research and Key Insight
+  </div>
+
+  <p>
+    We interviewed caregivers, consulted assistive-care experts from SG Enable, and reviewed around 16 sources including Dementia Singapore, Dementia UK, Alzheimer's Society, and Dementia Australia. We also reached out to 16 dementia care organisations.
+  </p>
+
+  <p>
+    The most important finding was that many people with dementia are unfamiliar with technology and cannot navigate apps or menus. This shaped our biggest design decision: Soli is completely hands-off for the patient. A caregiver sets everything up once, and Soli takes care of the rest.
+  </p>
+
+  <p>
+    Other insights that guided the design:
+  </p>
+
+  <ul>
+    <li>A harsh tone can leave a lasting negative impression, so Soli's voice is always gentle and warm</li>
+    <li>Consistent daily routines help people with dementia feel safe and perform better</li>
+    <li>Familiar, comforting objects (such as a favourite animal) bring real emotional value</li>
+    <li>Technology should supplement human connection, not replace it</li>
+    <li>Many elderly Singaporeans are more comfortable in languages other than English</li>
+  </ul>
+
+  <div class="section-title">
+    Features
+  </div>
+
+  <ul>
+    <li>An animated companion that breathes, blinks, and speaks in a slow, warm voice</li>
+    <li>Personalisable forms (sunflower, pig, cat, and more) to match what each person loves</li>
+    <li>Support for English, Mandarin, Malay, and Tamil</li>
+    <li>Scheduled daily reminders and a daily affirmation that the person is loved</li>
+    <li>A memory diary of loved ones with names, relationships, and photos</li>
+    <li>Selfie time with fun filters, with photos shared to a family inbox</li>
+    <li>Simple cognitive activities and music</li>
+    <li>A separate caregiver dashboard for all settings, with optional safety alerts</li>
+  </ul>
+
+  <div class="section-title">
+    Prototyping
+  </div>
+
+  <p>
+    Because physical builds are costly, we took a software-first approach to refine features before committing to hardware. Across three prototype iterations, we moved from an app-like interface (rejected for being too complex) to a fully passive, voice-driven companion. The final prototype is a React web app built with AI-assisted development, with the companion logic kept modular so it can later be ported to a physical device.
+  </p>
+
+  <div class="section-title">
+    Project Milestones
+  </div>
+
+  <p>
+    AI-assisted research and design, user and expert interviews, iterative prototyping, a full SWOT analysis with strategic recommendations, and marketing and outreach.
+  </p>
+
+  <div class="section-title">
+    My Role
+  </div>
+
+  <p>
+    I led outreach to dementia care organisations, conducted user interviews and expert consultations, documented our use of AI across the project, and wrote our progress reports and presentation materials.
+  </p>
+
+</div>
+
+</div>
+
+</body>
+</html>
