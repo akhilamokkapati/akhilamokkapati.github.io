@@ -156,6 +156,23 @@ li{
 
 }
 
+.proto-btn{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.35);
+  color:white;
+  text-decoration:none;
+  font-size:20px;
+  margin-bottom:60px;
+  transition:0.25s ease;
+}
+
+.proto-btn:hover{
+  background:white;
+  color:#f15304;
+}
+
 </style>
 </head>
 
@@ -177,20 +194,14 @@ SUTD Baby Shark Fund (BSF) 2026 grant project | July to November 2026
 
 <div class="project-text">
 
-  <div class="section-title first">
+  <a class="proto-btn" href="https://soli-weld.vercel.app/#/caregiver" target="_blank">Try the v1 prototype →</a>
+
+  <div class="section-title">
     Overview
   </div>
 
   <p>
-    Soli is a smart companion device designed for elderly people living with dementia. It combines a digital memory diary, gentle voice and visual reminders, adaptive AI, and emotion-aware companionship in a cute, pet-like form. The project received S$2,000 in funding through SUTD's Baby Shark Fund.
-  </p>
-
-  <div class="section-title">
-    The Problem
-  </div>
-
-  <p>
-    Most dementia products on the market are single-purpose tools focused on safety or activities. Very few address the emotional side of living with dementia: loneliness, confusion, and the need for comfort and routine. Soli fills this gap by bringing companionship, routine support, cognitive engagement, and family connection together in one device.
+    Soli is a pet-like companion for elderly people living with dementia. It offers gentle voice and visual reminders, a digital memory diary of loved ones, and emotion-aware companionship. The project was funded with S$2,000 through SUTD's Baby Shark Fund.
   </p>
 
   <div class="quote">
@@ -198,42 +209,23 @@ SUTD Baby Shark Fund (BSF) 2026 grant project | July to November 2026
   </div>
 
   <div class="section-title">
-    Research and Key Insight
+    Key Insight
   </div>
 
   <p>
-    We interviewed caregivers, consulted assistive-care experts from SG Enable, and reviewed around 16 sources including Dementia Singapore, Dementia UK, Alzheimer's Society, and Dementia Australia. We also reached out to 16 dementia care organisations.
+    Most dementia products focus on safety or activities, and few address loneliness and the need for comfort and routine. Through caregiver interviews, consultations with SG Enable, and outreach to 16 dementia care organisations, we learned that many people with dementia cannot navigate apps or menus. So Soli is completely hands-off for the patient: a caregiver sets everything up once, and Soli does the rest.
   </p>
-
-  <p>
-    The most important finding was that many people with dementia are unfamiliar with technology and cannot navigate apps or menus. This shaped our biggest design decision: Soli is completely hands-off for the patient. A caregiver sets everything up once, and Soli takes care of the rest.
-  </p>
-
-  <p>
-    Other insights that guided the design:
-  </p>
-
-  <ul>
-    <li>A harsh tone can leave a lasting negative impression, so Soli's voice is always gentle and warm</li>
-    <li>Consistent daily routines help people with dementia feel safe and perform better</li>
-    <li>Familiar, comforting objects (such as a favourite animal) bring real emotional value</li>
-    <li>Technology should supplement human connection, not replace it</li>
-    <li>Many elderly Singaporeans are more comfortable in languages other than English</li>
-  </ul>
 
   <div class="section-title">
     Features
   </div>
 
   <ul>
-    <li>An animated companion that breathes, blinks, and speaks in a slow, warm voice</li>
-    <li>Personalisable forms (sunflower, pig, cat, and more) to match what each person loves</li>
-    <li>Support for English, Mandarin, Malay, and Tamil</li>
-    <li>Scheduled daily reminders and a daily affirmation that the person is loved</li>
-    <li>A memory diary of loved ones with names, relationships, and photos</li>
-    <li>Selfie time with fun filters, with photos shared to a family inbox</li>
-    <li>Simple cognitive activities and music</li>
-    <li>A separate caregiver dashboard for all settings, with optional safety alerts</li>
+    <li>Animated companion with a slow, warm voice, in forms like a sunflower, pig, or cat</li>
+    <li>English, Mandarin, Malay, and Tamil support</li>
+    <li>Daily reminders and affirmations</li>
+    <li>Memory diary of loved ones, plus selfie time shared to a family inbox</li>
+    <li>Caregiver dashboard for all settings, with optional safety alerts</li>
   </ul>
 
   <div class="section-title">
@@ -241,15 +233,7 @@ SUTD Baby Shark Fund (BSF) 2026 grant project | July to November 2026
   </div>
 
   <p>
-    Because physical builds are costly, we took a software-first approach to refine features before committing to hardware. Across three prototype iterations, we moved from an app-like interface (rejected for being too complex) to a fully passive, voice-driven companion. The final prototype is a React web app built with AI-assisted development, with the companion logic kept modular so it can later be ported to a physical device.
-  </p>
-
-  <div class="section-title">
-    Project Milestones
-  </div>
-
-  <p>
-    AI-assisted research and design, user and expert interviews, iterative prototyping, a full SWOT analysis with strategic recommendations, and marketing and outreach.
+    We took a software-first approach to refine features before building hardware. Over three iterations we moved from an app-like interface, which was too complex, to a fully passive, voice-driven companion. The v1 prototype is a React web app built with AI-assisted development, with modular logic so it can later be ported to a physical device.
   </p>
 
   <div class="section-title">
@@ -257,7 +241,7 @@ SUTD Baby Shark Fund (BSF) 2026 grant project | July to November 2026
   </div>
 
   <p>
-    I led outreach to dementia care organisations, conducted user interviews and expert consultations, documented our use of AI across the project, and wrote our progress reports and presentation materials.
+    I led outreach to dementia care organisations, conducted user interviews and expert consultations, documented our use of AI, and wrote our progress reports and presentation materials.
   </p>
 
 </div>
