@@ -250,7 +250,11 @@ h2{
     margin:24px auto 0;
   }
 }
-/* PATI -> PARTY */
+.nowrap{
+  white-space:nowrap;
+}
+
+/* PATI -> PARTY (stop motion) */
 .party-link{
   position:relative;
   display:inline-block;
@@ -260,10 +264,11 @@ h2{
   clip-path:inset(0 -1em);
 }
 
+/* letters hop in a few held frames, like an animator moving a puppet */
 .party-link .c{
   display:inline-block;
-  transition:transform 0.45s cubic-bezier(0.6,-0.2,0.3,1.2);
-  transition-delay:calc(var(--i) * 45ms);
+  transition:transform 0.55s steps(5, end);
+  transition-delay:calc(var(--i) * 130ms);
 }
 
 .party-link .party{
@@ -279,8 +284,8 @@ h2{
 
 .party-link .party .c.y{
   transform:translateY(-140%) rotate(-25deg);
-  transition:transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
-  transition-delay:0.28s;
+  transition:transform 0.7s steps(7, end);
+  transition-delay:0.55s;
 }
 
 .party-link:hover .pati .c,
@@ -291,11 +296,23 @@ h2{
 .party-link:hover .party .c,
 .party-link:focus-visible .party .c{
   transform:translateY(0) rotate(0);
+  animation:boil 0.5s steps(1, end) infinite;
+  animation-delay:calc(1.1s + var(--i) * 70ms);
+}
+
+/* the hand-jittered "boil" you see on stop-motion fur and paper edges */
+@keyframes boil{
+  0%   { rotate:-3deg; translate:0 0; }
+  25%  { rotate:2deg;  translate:1px -2px; }
+  50%  { rotate:-1deg; translate:-1px 1px; }
+  75%  { rotate:3deg;  translate:2px 0; }
+  100% { rotate:-3deg; translate:0 0; }
 }
 
 @media(prefers-reduced-motion:reduce){
   .party-link .c{
     transition:none;
+    animation:none !important;
   }
 }
 </style>
@@ -318,7 +335,7 @@ h2{
 <div class="wrap">
 
 <!-- NAME -->
-<h1 class="site-name">Akhila Mokka<a class="party-link" href="party.html" aria-label="pati, link to my side projects"><span class="pati" aria-hidden="true"><span class="c" style="--i:0">p</span><span class="c" style="--i:1">a</span><span class="c" style="--i:2">t</span><span class="c" style="--i:3">i</span></span><span class="party" aria-hidden="true"><span class="c" style="--i:0">p</span><span class="c" style="--i:1">a</span><span class="c" style="--i:2">r</span><span class="c" style="--i:3">t</span><span class="c y" style="--i:4">y</span></span></a></h1>
+<h1 class="site-name">Akhila <span class="nowrap">Mokka<a class="party-link" href="party.html" aria-label="pati, link to my side projects"><span class="pati" aria-hidden="true"><span class="c" style="--i:0">p</span><span class="c" style="--i:1">a</span><span class="c" style="--i:2">t</span><span class="c" style="--i:3">i</span></span><span class="party" aria-hidden="true"><span class="c" style="--i:0">p</span><span class="c" style="--i:1">a</span><span class="c" style="--i:2">r</span><span class="c" style="--i:3">t</span><span class="c y" style="--i:4">y</span></span></a></span></h1>
 
 
 <!-- INTRO -->
@@ -704,46 +721,63 @@ document.getElementById("msgForm").addEventListener("submit", async (e) => {
 const partyLink = document.querySelector(".party-link");
 let lastConfetti = 0;
 
+/* paper cutouts that fall in held frames (about 9 fps), like Fantastic Mr. Fox */
 partyLink.addEventListener("mouseenter", () => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const now = Date.now();
-  if (now - lastConfetti < 900) return;
+  if (now - lastConfetti < 2200) return;
   lastConfetti = now;
 
   const r = partyLink.getBoundingClientRect();
   const cx = r.left + r.width / 2;
   const cy = r.top + r.height / 2;
-  const colors = ["#ffffff", "#ffd60a", "#ff4d8d", "#2ee6d6", "#7c4dff"];
+  const colors = ["#f4e3c1", "#e8a317", "#5b3a1e", "#7a8b3c", "#a3271b"];
+  const shapes = [
+    { borderRadius: "0 100% 0 100%" },
+    { borderRadius: "50%" },
+    { clipPath: "polygon(50% 0, 100% 100%, 0 100%)" },
+    { borderRadius: "2px" }
+  ];
+  const frames = 14;
 
-  for (let n = 0; n < 32; n++) {
+  for (let n = 0; n < 22; n++) {
     const p = document.createElement("span");
-    const size = 6 + Math.random() * 7;
+    const size = 10 + Math.random() * 12;
     Object.assign(p.style, {
       position: "fixed",
       left: cx + "px",
       top: cy + "px",
       width: size + "px",
-      height: size * 0.5 + "px",
+      height: size * (0.7 + Math.random() * 0.4) + "px",
       background: colors[n % colors.length],
-      borderRadius: "1px",
+      boxShadow: "1px 2px 0 rgba(0,0,0,0.25)",
       pointerEvents: "none",
       zIndex: 30
-    });
+    }, shapes[n % shapes.length]);
     document.body.appendChild(p);
 
-    const angle = Math.random() * Math.PI * 2;
-    const dist = 90 + Math.random() * 160;
-    const dx = Math.cos(angle) * dist;
-    const dy = Math.sin(angle) * dist - 60;
+    const dx = (Math.random() - 0.5) * 420;
+    const up = 50 + Math.random() * 70;
+    const fall = 170 + Math.random() * 130;
+    const spin = (Math.random() - 0.5) * 30;
+    const base = Math.random() * 360;
 
-    p.animate(
-      [
-        { transform: "translate(-50%, -50%) rotate(0deg)", opacity: 1 },
-        { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy + 120}px)) rotate(${Math.random() * 720}deg)`, opacity: 0 }
-      ],
-      { duration: 900 + Math.random() * 500, easing: "cubic-bezier(0.2, 0.7, 0.4, 1)" }
-    ).onfinish = () => p.remove();
+    const kf = [];
+    for (let i = 0; i < frames; i++) {
+      const t = i / (frames - 1);
+      const x = dx * t;
+      const y = -up * 4 * t * (1 - t) + fall * t * t;
+      const rot = base + i * spin + (Math.random() - 0.5) * 40;
+      kf.push({
+        transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${rot}deg)`,
+        opacity: i === frames - 1 ? 0 : 1,
+        easing: "steps(1, end)"
+      });
+    }
+
+    p.animate(kf, { duration: 1500 + Math.random() * 300, fill: "forwards" })
+      .onfinish = () => p.remove();
   }
 });
 </script>
