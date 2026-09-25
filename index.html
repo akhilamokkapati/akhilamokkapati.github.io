@@ -605,6 +605,13 @@ window.addEventListener("scroll", () => {
 <script>
 const WEB3FORMS_KEY = "60a6e2bf-27b9-4b37-ab3b-168218b26fbb";
 
+document.getElementById("msgText").addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    if (e.target.value.trim()) document.getElementById("msgForm").requestSubmit();
+  }
+});
+
 document.getElementById("msgForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
