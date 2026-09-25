@@ -163,10 +163,109 @@ h2{
 }
 
 }
+/* MESSAGE BOX */
+.msg-box{
+  position:absolute;
+  top:24px;
+  right:28px;
+  width:270px;
+  z-index:20;
+}
+
+.msg-field{
+  position:relative;
+}
+
+.msg-field textarea{
+  width:100%;
+  height:86px;
+  resize:none;
+  padding:12px 46px 12px 14px;
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  line-height:1.4;
+  color:white;
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.4);
+  border-radius:8px;
+  outline:none;
+}
+
+.msg-field textarea::placeholder{
+  color:rgba(255,255,255,0.75);
+}
+
+.msg-field textarea:focus{
+  border-color:white;
+  background:rgba(255,255,255,0.2);
+}
+
+.msg-send{
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  width:32px;
+  height:32px;
+  padding:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.msg-send:hover{
+  opacity:0.85;
+}
+
+.msg-send:disabled{
+  opacity:0.5;
+  cursor:default;
+}
+
+.msg-send svg{
+  width:16px;
+  height:16px;
+  fill:#f15304;
+}
+
+.msg-caption{
+  margin-top:8px;
+  font-size:14px;
+  text-align:center;
+  opacity:0.95;
+}
+
+.msg-honey{
+  display:none;
+}
+
+@media(max-width:1100px){
+  .msg-box{
+    position:static;
+    width:100%;
+    max-width:320px;
+    margin:24px auto 0;
+  }
+}
 </style>
 </head>
 
 <body>
+
+<!-- MESSAGE BOX -->
+<form class="msg-box" id="msgForm">
+  <div class="msg-field">
+    <textarea id="msgText" name="message" placeholder="Leave a message (add your email if you'd like a reply)" required maxlength="2000"></textarea>
+    <input type="checkbox" name="botcheck" class="msg-honey" tabindex="-1" autocomplete="off">
+    <button class="msg-send" id="msgSend" type="submit" aria-label="Send message">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+  <div class="msg-caption" id="msgCaption">send me a message :)</div>
+</form>
 
 <div class="wrap">
 
@@ -500,6 +599,48 @@ window.addEventListener("scroll", () => {
 
   });
 
+});
+</script>
+
+<script>
+const WEB3FORMS_KEY = "60a6e2bf-27b9-4b37-ab3b-168218b26fbb";
+
+document.getElementById("msgForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const text = document.getElementById("msgText");
+  const btn = document.getElementById("msgSend");
+  const caption = document.getElementById("msgCaption");
+
+  if (e.target.botcheck.checked) return;
+
+  btn.disabled = true;
+  caption.textContent = "sending...";
+
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: "New message from your portfolio site",
+        from_name: "Portfolio visitor",
+        message: text.value
+      })
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      text.value = "";
+      caption.textContent = "sent, thank you :)";
+    } else {
+      caption.textContent = "couldn't send, please try again";
+    }
+  } catch (err) {
+    caption.textContent = "couldn't send, please try again";
+  }
+
+  btn.disabled = false;
 });
 </script>
 
