@@ -250,6 +250,54 @@ h2{
     margin:24px auto 0;
   }
 }
+/* PATI -> PARTY */
+.party-link{
+  position:relative;
+  display:inline-block;
+  color:inherit;
+  text-decoration:none;
+  cursor:pointer;
+  clip-path:inset(0 -1em);
+}
+
+.party-link .c{
+  display:inline-block;
+  transition:transform 0.45s cubic-bezier(0.6,-0.2,0.3,1.2);
+  transition-delay:calc(var(--i) * 45ms);
+}
+
+.party-link .party{
+  position:absolute;
+  left:0;
+  top:0;
+  white-space:nowrap;
+}
+
+.party-link .party .c{
+  transform:translateY(120%);
+}
+
+.party-link .party .c.y{
+  transform:translateY(-140%) rotate(-25deg);
+  transition:transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+  transition-delay:0.28s;
+}
+
+.party-link:hover .pati .c,
+.party-link:focus-visible .pati .c{
+  transform:translateY(-120%);
+}
+
+.party-link:hover .party .c,
+.party-link:focus-visible .party .c{
+  transform:translateY(0) rotate(0);
+}
+
+@media(prefers-reduced-motion:reduce){
+  .party-link .c{
+    transition:none;
+  }
+}
 </style>
 </head>
 
@@ -270,7 +318,8 @@ h2{
 <div class="wrap">
 
 <!-- NAME -->
-<h1 class="site-name">Akhila Mokkapati</h1>
+<h1 class="site-name">Akhila Mokka<a class="party-link" href="party.html" aria-label="pati, link to my side projects"><span class="pati" aria-hidden="true"><span class="c" style="--i:0">p</span><span class="c" style="--i:1">a</span><span class="c" style="--i:2">t</span><span class="c" style="--i:3">i</span></span><span class="party" aria-hidden="true"><span class="c" style="--i:0">p</span><span class="c" style="--i:1">a</span><span class="c" style="--i:2">r</span><span class="c" style="--i:3">t</span><span class="c y" style="--i:4">y</span></span></a></h1>
+
 
 <!-- INTRO -->
 <p class="bio">
@@ -648,6 +697,54 @@ document.getElementById("msgForm").addEventListener("submit", async (e) => {
   }
 
   btn.disabled = false;
+});
+</script>
+
+<script>
+const partyLink = document.querySelector(".party-link");
+let lastConfetti = 0;
+
+partyLink.addEventListener("mouseenter", () => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const now = Date.now();
+  if (now - lastConfetti < 900) return;
+  lastConfetti = now;
+
+  const r = partyLink.getBoundingClientRect();
+  const cx = r.left + r.width / 2;
+  const cy = r.top + r.height / 2;
+  const colors = ["#ffffff", "#ffd60a", "#ff4d8d", "#2ee6d6", "#7c4dff"];
+
+  for (let n = 0; n < 32; n++) {
+    const p = document.createElement("span");
+    const size = 6 + Math.random() * 7;
+    Object.assign(p.style, {
+      position: "fixed",
+      left: cx + "px",
+      top: cy + "px",
+      width: size + "px",
+      height: size * 0.5 + "px",
+      background: colors[n % colors.length],
+      borderRadius: "1px",
+      pointerEvents: "none",
+      zIndex: 30
+    });
+    document.body.appendChild(p);
+
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 90 + Math.random() * 160;
+    const dx = Math.cos(angle) * dist;
+    const dy = Math.sin(angle) * dist - 60;
+
+    p.animate(
+      [
+        { transform: "translate(-50%, -50%) rotate(0deg)", opacity: 1 },
+        { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy + 120}px)) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+      ],
+      { duration: 900 + Math.random() * 500, easing: "cubic-bezier(0.2, 0.7, 0.4, 1)" }
+    ).onfinish = () => p.remove();
+  }
 });
 </script>
 
