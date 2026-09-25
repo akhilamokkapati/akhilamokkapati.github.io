@@ -83,9 +83,29 @@ h1{
   opacity:0.96;
 }
 
+/* GRID */
+.project-layout{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:70px;
+  align-items:start;
+}
+
+/* SIDE PHOTO */
+.side-photo{
+  position:sticky;
+  top:120px;
+}
+
+.side-photo img{
+  width:100%;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
 /* TEXT */
 .project-text{
-  max-width:1000px;
+  min-width:0;
 }
 
 .project-text p{
@@ -144,6 +164,15 @@ li{
 /* MOBILE */
 @media(max-width:1100px){
 
+.project-layout{
+  grid-template-columns:1fr;
+}
+
+.side-photo{
+  position:static;
+  max-width:600px;
+}
+
 h1{
   font-size:58px;
 }
@@ -180,7 +209,6 @@ Wearable Rehabilitation System — Sensor, Embedded Systems & System Integration
 
     <div class="project-images">
       <img src="system-diagram.png">
-      <img class="portrait" src="runmo-showcase.jpg" alt="RUNMO showcase poster, live dashboard, and team polaroid">
     </div>
 
     <div class="section-title">
@@ -221,6 +249,10 @@ Wearable Rehabilitation System — Sensor, Embedded Systems & System Integration
       </video>
     </div>
 
+  </div>
+
+  <div class="side-photo">
+    <img src="runmo-showcase.jpg" alt="RUNMO showcase poster, live dashboard, and team polaroid">
   </div>
 
 </div>
